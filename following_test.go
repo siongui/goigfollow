@@ -1,4 +1,4 @@
-package igstory
+package igfollow
 
 import (
 	"os"

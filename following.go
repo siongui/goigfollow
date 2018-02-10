@@ -1,4 +1,5 @@
-package igstory
+// Package igfollow helps you get Instagram following and followers users.
+package igfollow
 
 // Get all following users
 
@@ -26,6 +27,10 @@ type FollowUser struct {
 	Username string `json:"username"`
 }
 
+// id: Id of the Instagram user whose followers to be retrieved.
+//
+// ds_user_id, sessionid, csrftoken: Login Instagram and get these three cookie
+// values from Chrome Developer Tools. See https://stackoverflow.com/a/44773079
 func GetFollowers(id, ds_user_id, sessionid, csrftoken string) (rf RawFollow, err error) {
 	url := strings.Replace(UrlFollowers, "{{USERID}}", id, 1)
 	rf, err = GetFollowResponse(url, ds_user_id, sessionid, csrftoken)
@@ -46,6 +51,10 @@ func GetFollowers(id, ds_user_id, sessionid, csrftoken string) (rf RawFollow, er
 	return
 }
 
+// id: Id of the Instagram user whose following to be retrieved.
+//
+// ds_user_id, sessionid, csrftoken: Login Instagram and get these three cookie
+// values from Chrome Developer Tools. See https://stackoverflow.com/a/44773079
 func GetFollowing(id, ds_user_id, sessionid, csrftoken string) (rf RawFollow, err error) {
 	url := strings.Replace(UrlFollowing, "{{USERID}}", id, 1)
 	rf, err = GetFollowResponse(url, ds_user_id, sessionid, csrftoken)
